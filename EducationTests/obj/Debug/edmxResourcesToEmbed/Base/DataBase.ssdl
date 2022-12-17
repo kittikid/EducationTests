@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TestsBase.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="answer_table">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_question" Type="int" />
+    <Property Name="name_answers" Type="nvarchar" MaxLength="100" />
+    <Property Name="correct_answer" Type="bit" />
+  </EntityType>
+  <EntityType Name="name_test">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name_test" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="question_table">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="question" Type="nvarchar" MaxLength="100" />
+    <Property Name="id_name_test" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="user_score">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_user" Type="int" />
+    <Property Name="id_test" Type="int" />
+    <Property Name="status" Type="nvarchar" MaxLength="100" />
+    <Property Name="progress" Type="int" />
+    <Property Name="date" Type="date" />
+    <Property Name="time_start" Type="time" Precision="7" />
+  </EntityType>
+  <EntityType Name="user_tests">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_user_score" Type="int" />
+    <Property Name="id_question" Type="int" />
+    <Property Name="id_answer" Type="int" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="email" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="login" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="password" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="role" Type="bit" Nullable="false" />
+    <Property Name="image" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <Association Name="FK__answer_ta__id_qu__2F10007B">
+    <End Role="question_table" Type="Self.question_table" Multiplicity="0..1" />
+    <End Role="answer_table" Type="Self.answer_table" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="question_table">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="answer_table">
+        <PropertyRef Name="id_question" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__question___id_na__2E1BDC42">
+    <End Role="name_test" Type="Self.name_test" Multiplicity="0..1" />
+    <End Role="question_table" Type="Self.question_table" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="name_test">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="question_table">
+        <PropertyRef Name="id_name_test" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__user_scor__id_te__30F848ED">
+    <End Role="question_table" Type="Self.question_table" Multiplicity="0..1" />
+    <End Role="user_score" Type="Self.user_score" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="question_table">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="user_score">
+        <PropertyRef Name="id_test" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__user_scor__id_us__300424B4">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="user_score" Type="Self.user_score" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="user_score">
+        <PropertyRef Name="id_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__user_test__id_an__33D4B598">
+    <End Role="answer_table" Type="Self.answer_table" Multiplicity="0..1" />
+    <End Role="user_tests" Type="Self.user_tests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="answer_table">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="user_tests">
+        <PropertyRef Name="id_answer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__user_test__id_qu__32E0915F">
+    <End Role="question_table" Type="Self.question_table" Multiplicity="0..1" />
+    <End Role="user_tests" Type="Self.user_tests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="question_table">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="user_tests">
+        <PropertyRef Name="id_question" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__user_test__id_us__31EC6D26">
+    <End Role="user_score" Type="Self.user_score" Multiplicity="0..1" />
+    <End Role="user_tests" Type="Self.user_tests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user_score">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="user_tests">
+        <PropertyRef Name="id_user_score" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="TestsBaseStoreContainer">
+    <EntitySet Name="answer_table" EntityType="Self.answer_table" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="name_test" EntityType="Self.name_test" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="question_table" EntityType="Self.question_table" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="user_score" EntityType="Self.user_score" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="user_tests" EntityType="Self.user_tests" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__answer_ta__id_qu__2F10007B" Association="Self.FK__answer_ta__id_qu__2F10007B">
+      <End Role="question_table" EntitySet="question_table" />
+      <End Role="answer_table" EntitySet="answer_table" />
+    </AssociationSet>
+    <AssociationSet Name="FK__question___id_na__2E1BDC42" Association="Self.FK__question___id_na__2E1BDC42">
+      <End Role="name_test" EntitySet="name_test" />
+      <End Role="question_table" EntitySet="question_table" />
+    </AssociationSet>
+    <AssociationSet Name="FK__user_scor__id_te__30F848ED" Association="Self.FK__user_scor__id_te__30F848ED">
+      <End Role="question_table" EntitySet="question_table" />
+      <End Role="user_score" EntitySet="user_score" />
+    </AssociationSet>
+    <AssociationSet Name="FK__user_scor__id_us__300424B4" Association="Self.FK__user_scor__id_us__300424B4">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="user_score" EntitySet="user_score" />
+    </AssociationSet>
+    <AssociationSet Name="FK__user_test__id_an__33D4B598" Association="Self.FK__user_test__id_an__33D4B598">
+      <End Role="answer_table" EntitySet="answer_table" />
+      <End Role="user_tests" EntitySet="user_tests" />
+    </AssociationSet>
+    <AssociationSet Name="FK__user_test__id_qu__32E0915F" Association="Self.FK__user_test__id_qu__32E0915F">
+      <End Role="question_table" EntitySet="question_table" />
+      <End Role="user_tests" EntitySet="user_tests" />
+    </AssociationSet>
+    <AssociationSet Name="FK__user_test__id_us__31EC6D26" Association="Self.FK__user_test__id_us__31EC6D26">
+      <End Role="user_score" EntitySet="user_score" />
+      <End Role="user_tests" EntitySet="user_tests" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

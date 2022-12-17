@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TestsBase" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="answer_table">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_question" Type="Int32" />
+    <Property Name="name_answers" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="correct_answer" Type="Boolean" />
+    <NavigationProperty Name="question_table" Relationship="Self.FK__answer_ta__id_qu__2F10007B" FromRole="answer_table" ToRole="question_table" />
+    <NavigationProperty Name="user_tests" Relationship="Self.FK__user_test__id_an__33D4B598" FromRole="answer_table" ToRole="user_tests" />
+  </EntityType>
+  <EntityType Name="name_test">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name_test1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="question_table" Relationship="Self.FK__question___id_na__2E1BDC42" FromRole="name_test" ToRole="question_table" />
+  </EntityType>
+  <EntityType Name="question_table">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="question" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="id_name_test" Type="Int32" />
+    <NavigationProperty Name="answer_table" Relationship="Self.FK__answer_ta__id_qu__2F10007B" FromRole="question_table" ToRole="answer_table" />
+    <NavigationProperty Name="name_test" Relationship="Self.FK__question___id_na__2E1BDC42" FromRole="question_table" ToRole="name_test" />
+    <NavigationProperty Name="user_score" Relationship="Self.FK__user_scor__id_te__30F848ED" FromRole="question_table" ToRole="user_score" />
+    <NavigationProperty Name="user_tests" Relationship="Self.FK__user_test__id_qu__32E0915F" FromRole="question_table" ToRole="user_tests" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="user_score">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_user" Type="Int32" />
+    <Property Name="id_test" Type="Int32" />
+    <Property Name="status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="progress" Type="Int32" />
+    <Property Name="date" Type="DateTime" Precision="0" />
+    <Property Name="time_start" Type="Time" Precision="7" />
+    <NavigationProperty Name="question_table" Relationship="Self.FK__user_scor__id_te__30F848ED" FromRole="user_score" ToRole="question_table" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__user_scor__id_us__300424B4" FromRole="user_score" ToRole="Users" />
+    <NavigationProperty Name="user_tests" Relationship="Self.FK__user_test__id_us__31EC6D26" FromRole="user_score" ToRole="user_tests" />
+  </EntityType>
+  <EntityType Name="user_tests">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_user_score" Type="Int32" />
+    <Property Name="id_question" Type="Int32" />
+    <Property Name="id_answer" Type="Int32" />
+    <NavigationProperty Name="answer_table" Relationship="Self.FK__user_test__id_an__33D4B598" FromRole="user_tests" ToRole="answer_table" />
+    <NavigationProperty Name="question_table" Relationship="Self.FK__user_test__id_qu__32E0915F" FromRole="user_tests" ToRole="question_table" />
+    <NavigationProperty Name="user_score" Relationship="Self.FK__user_test__id_us__31EC6D26" FromRole="user_tests" ToRole="user_score" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="login" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="image" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="user_score" Relationship="Self.FK__user_scor__id_us__300424B4" FromRole="Users" ToRole="user_score" />
+    <Property Name="role" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__answer_ta__id_qu__2F10007B">
+    <End Role="question_table" Type="Self.question_table" Multiplicity="0..1" />
+    <End Role="answer_table" Type="Self.answer_table" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="question_table">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="answer_table">
+        <PropertyRef Name="id_question" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__user_test__id_an__33D4B598">
+    <End Role="answer_table" Type="Self.answer_table" Multiplicity="0..1" />
+    <End Role="user_tests" Type="Self.user_tests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="answer_table">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="user_tests">
+        <PropertyRef Name="id_answer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__question___id_na__2E1BDC42">
+    <End Role="name_test" Type="Self.name_test" Multiplicity="0..1" />
+    <End Role="question_table" Type="Self.question_table" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="name_test">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="question_table">
+        <PropertyRef Name="id_name_test" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__user_scor__id_te__30F848ED">
+    <End Role="question_table" Type="Self.question_table" Multiplicity="0..1" />
+    <End Role="user_score" Type="Self.user_score" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="question_table">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="user_score">
+        <PropertyRef Name="id_test" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__user_test__id_qu__32E0915F">
+    <End Role="question_table" Type="Self.question_table" Multiplicity="0..1" />
+    <End Role="user_tests" Type="Self.user_tests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="question_table">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="user_tests">
+        <PropertyRef Name="id_question" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__user_scor__id_us__300424B4">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="user_score" Type="Self.user_score" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="user_score">
+        <PropertyRef Name="id_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__user_test__id_us__31EC6D26">
+    <End Role="user_score" Type="Self.user_score" Multiplicity="0..1" />
+    <End Role="user_tests" Type="Self.user_tests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user_score">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="user_tests">
+        <PropertyRef Name="id_user_score" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TestsEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="answer_table" EntityType="Self.answer_table" />
+    <EntitySet Name="name_test" EntityType="Self.name_test" />
+    <EntitySet Name="question_table" EntityType="Self.question_table" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="user_score" EntityType="Self.user_score" />
+    <EntitySet Name="user_tests" EntityType="Self.user_tests" />
+    <EntitySet Name="Users" EntityType="Self.Users" />
+    <AssociationSet Name="FK__answer_ta__id_qu__2F10007B" Association="Self.FK__answer_ta__id_qu__2F10007B">
+      <End Role="question_table" EntitySet="question_table" />
+      <End Role="answer_table" EntitySet="answer_table" />
+    </AssociationSet>
+    <AssociationSet Name="FK__user_test__id_an__33D4B598" Association="Self.FK__user_test__id_an__33D4B598">
+      <End Role="answer_table" EntitySet="answer_table" />
+      <End Role="user_tests" EntitySet="user_tests" />
+    </AssociationSet>
+    <AssociationSet Name="FK__question___id_na__2E1BDC42" Association="Self.FK__question___id_na__2E1BDC42">
+      <End Role="name_test" EntitySet="name_test" />
+      <End Role="question_table" EntitySet="question_table" />
+    </AssociationSet>
+    <AssociationSet Name="FK__user_scor__id_te__30F848ED" Association="Self.FK__user_scor__id_te__30F848ED">
+      <End Role="question_table" EntitySet="question_table" />
+      <End Role="user_score" EntitySet="user_score" />
+    </AssociationSet>
+    <AssociationSet Name="FK__user_test__id_qu__32E0915F" Association="Self.FK__user_test__id_qu__32E0915F">
+      <End Role="question_table" EntitySet="question_table" />
+      <End Role="user_tests" EntitySet="user_tests" />
+    </AssociationSet>
+    <AssociationSet Name="FK__user_scor__id_us__300424B4" Association="Self.FK__user_scor__id_us__300424B4">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="user_score" EntitySet="user_score" />
+    </AssociationSet>
+    <AssociationSet Name="FK__user_test__id_us__31EC6D26" Association="Self.FK__user_test__id_us__31EC6D26">
+      <End Role="user_score" EntitySet="user_score" />
+      <End Role="user_tests" EntitySet="user_tests" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(TestsBase.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(TestsBase.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

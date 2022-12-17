@@ -1,0 +1,57 @@
+D:\4is2\nuzhin\EducationTests\EducationTests\EducationTests\bin\Debug\EducationTests.exe.config
+D:\4is2\nuzhin\EducationTests\EducationTests\EducationTests\bin\Debug\EducationTests.exe
+D:\4is2\nuzhin\EducationTests\EducationTests\EducationTests\bin\Debug\EducationTests.pdb
+D:\4is2\nuzhin\EducationTests\EducationTests\EducationTests\obj\Debug\App.g.cs
+D:\4is2\nuzhin\EducationTests\EducationTests\EducationTests\obj\Debug\EducationTests_MarkupCompile.cache
+D:\4is2\nuzhin\EducationTests\EducationTests\EducationTests\obj\Debug\EducationTests_MarkupCompile.lref
+D:\4is2\nuzhin\EducationTests\EducationTests\EducationTests\obj\Debug\EducationTests.g.resources
+D:\4is2\nuzhin\EducationTests\EducationTests\EducationTests\obj\Debug\EducationTests.Properties.Resources.resources
+D:\4is2\nuzhin\EducationTests\EducationTests\EducationTests\obj\Debug\EducationTests.csproj.GenerateResource.cache
+D:\4is2\nuzhin\EducationTests\EducationTests\EducationTests\obj\Debug\EducationTests.csproj.CoreCompileInputs.cache
+D:\4is2\nuzhin\EducationTests\EducationTests\EducationTests\obj\Debug\EducationTests.exe
+D:\4is2\nuzhin\EducationTests\EducationTests\EducationTests\obj\Debug\EducationTests.pdb
+D:\4is2\nuzhin\EducationTests\EducationTests\EducationTests\obj\Debug\Windows\MainWindow.g.cs
+D:\4is2\nuzhin\EducationTests\EducationTests\EducationTests\obj\Debug\Windows\MainWindow.baml
+D:\4is2\nuzhin\EducationTests\EducationTests\EducationTests\bin\Debug\EntityFramework.dll
+D:\4is2\nuzhin\EducationTests\EducationTests\EducationTests\bin\Debug\EntityFramework.SqlServer.dll
+D:\4is2\nuzhin\EducationTests\EducationTests\EducationTests\bin\Debug\EntityFramework.xml
+D:\4is2\nuzhin\EducationTests\EducationTests\EducationTests\bin\Debug\EntityFramework.SqlServer.xml
+D:\4is2\nuzhin\EducationTests\EducationTests\EducationTests\obj\Debug\Windows\LoginWindow.g.cs
+D:\4is2\nuzhin\EducationTests\EducationTests\EducationTests\obj\Debug\EducationTests_Content.g.cs
+D:\4is2\nuzhin\EducationTests\EducationTests\EducationTests\obj\Debug\Windows\LoginWindow.baml
+D:\4is2\nuzhin\EducationTests\EducationTests\EducationTests\obj\Debug\EducationTests.csproj.CopyComplete
+D:\4is2\nuzhin\EducationTests\EducationTests\EducationTests\obj\Debug\Windows\RegistrationWindow.g.cs
+D:\4is2\nuzhin\EducationTests\EducationTests\EducationTests\obj\Debug\Windows\RegistrationWindow.baml
+D:\4is2\nuzhin\EducationTests\EducationTests\EducationTests\obj\Debug\Pages\MainPage.g.cs
+D:\4is2\nuzhin\EducationTests\EducationTests\EducationTests\obj\Debug\Pages\MainPage.baml
+C:\Папка для моих папок\Курсовая 2\nuzhin\EducationTests\EducationTests\obj\Debug\EducationTests.csproj.AssemblyReference.cache
+C:\Папка для моих папок\Курсовая 2\nuzhin\EducationTests\EducationTests\obj\Debug\EducationTests.csproj.SuggestedBindingRedirects.cache
+C:\Папка для моих папок\Курсовая 2\nuzhin\EducationTests\EducationTests\obj\Debug\Pages\MainPage.g.cs
+C:\Папка для моих папок\Курсовая 2\nuzhin\EducationTests\EducationTests\obj\Debug\Windows\LoginWindow.g.cs
+C:\Папка для моих папок\Курсовая 2\nuzhin\EducationTests\EducationTests\obj\Debug\Windows\MainWindow.g.cs
+C:\Папка для моих папок\Курсовая 2\nuzhin\EducationTests\EducationTests\obj\Debug\Windows\RegistrationWindow.g.cs
+C:\Папка для моих папок\Курсовая 2\nuzhin\EducationTests\EducationTests\obj\Debug\App.g.cs
+C:\Папка для моих папок\Курсовая 2\nuzhin\EducationTests\EducationTests\obj\Debug\EducationTests_Content.g.cs
+C:\Папка для моих папок\Курсовая 2\nuzhin\EducationTests\EducationTests\obj\Debug\EducationTests_MarkupCompile.cache
+C:\Папка для моих папок\Курсовая 2\nuzhin\EducationTests\EducationTests\obj\Debug\EducationTests_MarkupCompile.lref
+C:\Папка для моих папок\Курсовая 2\nuzhin\EducationTests\EducationTests\obj\Debug\EducationTests.exe
+C:\Папка для моих папок\Курсовая 2\nuzhin\EducationTests\EducationTests\obj\Debug\EducationTests.pdb
+C:\Папка для моих папок\Курсовая 2\nuzhin\EducationTests\EducationTests\bin\Debug\EducationTests.exe.config
+C:\Папка для моих папок\Курсовая 2\nuzhin\EducationTests\EducationTests\bin\Debug\EducationTests.exe
+C:\Папка для моих папок\Курсовая 2\nuzhin\EducationTests\EducationTests\bin\Debug\EducationTests.pdb
+C:\Папка для моих папок\Курсовая 2\nuzhin\EducationTests\EducationTests\bin\Debug\EntityFramework.dll
+C:\Папка для моих папок\Курсовая 2\nuzhin\EducationTests\EducationTests\bin\Debug\EntityFramework.SqlServer.dll
+C:\Папка для моих папок\Курсовая 2\nuzhin\EducationTests\EducationTests\bin\Debug\EntityFramework.xml
+C:\Папка для моих папок\Курсовая 2\nuzhin\EducationTests\EducationTests\bin\Debug\EntityFramework.SqlServer.xml
+C:\Папка для моих папок\Курсовая 2\nuzhin\EducationTests\EducationTests\bin\Debug\ru\EntityFramework.resources.dll
+C:\Папка для моих папок\Курсовая 2\nuzhin\EducationTests\EducationTests\obj\Debug\Pages\MainPage.baml
+C:\Папка для моих папок\Курсовая 2\nuzhin\EducationTests\EducationTests\obj\Debug\Windows\LoginWindow.baml
+C:\Папка для моих папок\Курсовая 2\nuzhin\EducationTests\EducationTests\obj\Debug\Windows\MainWindow.baml
+C:\Папка для моих папок\Курсовая 2\nuzhin\EducationTests\EducationTests\obj\Debug\Windows\RegistrationWindow.baml
+C:\Папка для моих папок\Курсовая 2\nuzhin\EducationTests\EducationTests\obj\Debug\EducationTests.g.resources
+C:\Папка для моих папок\Курсовая 2\nuzhin\EducationTests\EducationTests\obj\Debug\EducationTests.Properties.Resources.resources
+C:\Папка для моих папок\Курсовая 2\nuzhin\EducationTests\EducationTests\obj\Debug\EducationTests.csproj.GenerateResource.cache
+C:\Папка для моих папок\Курсовая 2\nuzhin\EducationTests\EducationTests\obj\Debug\EducationTests.csproj.CoreCompileInputs.cache
+C:\Папка для моих папок\Курсовая 2\nuzhin\EducationTests\EducationTests\obj\Debug\EducationTests.csproj.CopyComplete
+C:\Папка для моих папок\Курсовая 2\nuzhin\EducationTests\EducationTests\obj\Debug\Pages\PassTestPage.g.cs
+C:\Папка для моих папок\Курсовая 2\nuzhin\EducationTests\EducationTests\obj\Debug\Pages\PassTestPage.baml
