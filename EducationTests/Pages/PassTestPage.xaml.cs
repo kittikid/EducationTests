@@ -26,11 +26,10 @@ namespace EducationTests.Pages
             InitializeComponent();
             _testId = id + 1;
             labelTestName.Content += SourceCore.testsDataBase.name_test.SingleOrDefault(t => t.id == _testId).name;
-
+            textBlockQuestion.Text = SourceCore.testsDataBase.question_table.SingleOrDefault(t => t.id_name_test == _testId).question;
+            AnswerGrid.ItemsSource = SourceCore.testsDataBase.answer_table.ToList();
         }
         protected int _testId;
-
-
 
     }
 }
