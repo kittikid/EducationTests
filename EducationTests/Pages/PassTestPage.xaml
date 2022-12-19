@@ -38,11 +38,11 @@
         </DockPanel>
 
         <StackPanel Orientation="Horizontal" Grid.Row="3" HorizontalAlignment="Center">
-            <Button Content="Выбрать" 
-                    Height="30" Width="100" Padding="5,5,5,5" Margin="5,5,0,5"/>
+            <Button x:Name="SelectAnswerButton" Content="Выбрать" 
+                    Height="30" Width="100" Padding="5,5,5,5" Margin="5,5,0,5" Click="SelectAnswerButton_Click" />
 
-            <Button Content="Выбрать" 
-                    Height="30" Width="100" Padding="5,5,5,5" Margin="5,5,0,5"/>
+            <Button x:Name="NextQuestionButton" Content="Дальше" 
+                    Height="30" Width="100" Padding="5,5,5,5" Margin="5,5,0,5" Click="NextQuestionButton_Click" />
         </StackPanel>
         
     </Grid>
