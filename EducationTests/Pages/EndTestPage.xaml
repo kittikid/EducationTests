@@ -1,0 +1,36 @@
+﻿<Page x:Class="EducationTests.Pages.EndTestPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:EducationTests.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="EndTestPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+            <TextBlock x:Name="InfoTextBlock" Text="Вы прошли тест!" FontSize="24" FontWeight="Bold" Padding="5, 5, 0, 0"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="1">
+            <TextBlock x:Name="ResultTextBlock" Text="Ваш результат: " FontSize="24" FontWeight="Bold" Padding="5, 5, 0, 0"/>
+            <TextBlock x:Name="NumResultTextBlock" FontSize="24" FontWeight="Bold" Padding="5, 5, 0, 0"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="3" HorizontalAlignment="Center">
+            <Button x:Name="RepeatTestButton" Content="Повтроить" 
+                    Height="30" Width="100" Padding="5,5,5,5" Margin="5,5,0,5" Click="RepeatTestButton_Click"  />
+
+            <Button x:Name="EndTestButton" Content="Завершить" 
+                    Height="30" Width="100" Padding="5,5,5,5" Margin="5,5,0,5" Click="EndTestButton_Click"  />
+        </StackPanel>
+        
+    </Grid>
+</Page>

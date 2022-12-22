@@ -111,7 +111,7 @@ namespace EducationTests.Pages
             {
                 if (MainGrid.SelectedIndex != -1)
                 {
-                    PassTestPage page = new PassTestPage(MainGrid.SelectedIndex);
+                    PassTestPage page = new PassTestPage(MainGrid.SelectedIndex + 1);
                     this.NavigationService.Navigate(page);
                 }
             } 

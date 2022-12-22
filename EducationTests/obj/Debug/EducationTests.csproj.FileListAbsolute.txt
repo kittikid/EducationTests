@@ -55,3 +55,5 @@ C:\Папка для моих папок\Курсовая 2\nuzhin\EducationTest
 C:\Папка для моих папок\Курсовая 2\nuzhin\EducationTests\EducationTests\obj\Debug\EducationTests.csproj.CopyComplete
 C:\Папка для моих папок\Курсовая 2\nuzhin\EducationTests\EducationTests\obj\Debug\Pages\PassTestPage.g.cs
 C:\Папка для моих папок\Курсовая 2\nuzhin\EducationTests\EducationTests\obj\Debug\Pages\PassTestPage.baml
+C:\Папка для моих папок\Курсовая 2\nuzhin\EducationTests\EducationTests\obj\Debug\Pages\EndTestPage.g.cs
+C:\Папка для моих папок\Курсовая 2\nuzhin\EducationTests\EducationTests\obj\Debug\Pages\EndTestPage.baml

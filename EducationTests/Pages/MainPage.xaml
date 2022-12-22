@@ -44,7 +44,7 @@
         <DockPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
             <DataGrid x:Name="MainGrid" AutoGenerateColumns="False" CanUserAddRows="False" Background="White">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Название" Binding="{Binding Path=name}" Width="10*"/>
+                    <DataGridTextColumn Header="Название теста" Binding="{Binding Path=name}" Width="10*"/>
                     <!--кнопки управления данными выделенной строки-->
                     <DataGridTemplateColumn Header="Управление">
                         <DataGridTemplateColumn.CellTemplate>

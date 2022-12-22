@@ -17,13 +17,12 @@
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Horizontal" Grid.Row="0">
-            <Label x:Name="labelTestName" Content="Тест: " FontSize="24" FontWeight="Bold"/>
-
+            <Label x:Name="TestNameLabel" Content="Тест: " FontSize="24" FontWeight="Bold"/>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" Grid.Row="1">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
-                <TextBlock x:Name="textBlockQuestion" TextWrapping="Wrap" Width="580" FontSize="18" Padding="10" />
+                <TextBlock x:Name="QuestionNameTextBlock" TextWrapping="Wrap" Width="580" FontSize="18" Padding="10" />
             </ScrollViewer>
         </StackPanel>
 
@@ -37,6 +36,10 @@
             </DataGrid>
         </DockPanel>
 
+        <StackPanel Orientation="Horizontal" Grid.Row="3" HorizontalAlignment="Right">
+            <TextBlock x:Name="NumQuestionTextBLock" Padding="10" Text="Hsd" Foreground="Black" FontSize="18"/>
+        </StackPanel>
+
         <StackPanel Orientation="Horizontal" Grid.Row="3" HorizontalAlignment="Center">
             <Button x:Name="SelectAnswerButton" Content="Выбрать" 
                     Height="30" Width="100" Padding="5,5,5,5" Margin="5,5,0,5" Click="SelectAnswerButton_Click" />
@@ -44,6 +47,8 @@
             <Button x:Name="NextQuestionButton" Content="Дальше" 
                     Height="30" Width="100" Padding="5,5,5,5" Margin="5,5,0,5" Click="NextQuestionButton_Click" />
         </StackPanel>
+
+       
         
     </Grid>
 </Page>
