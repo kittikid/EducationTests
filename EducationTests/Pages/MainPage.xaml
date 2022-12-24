@@ -20,16 +20,22 @@
             <ColumnDefinition x:Name="TestColumnChange" Width="400" MaxWidth="400"/>
         </Grid.ColumnDefinitions>
 
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <Ellipse x:Name="UserProfileEllipse" Width="40" Height="40" Margin="5, 5, 0, 0" Cursor="Hand" Fill="Black" MouseLeftButtonDown="UserProfileEllipse_MouseLeftButtonDown">
+                
+            </Ellipse>
+        </StackPanel>
+        
         <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal">
             <Button x:Name="TestAdd" Content="Добавить" 
                     Height="30" Width="100" Padding="5,5,5,5" Margin="5,5,0,5"
                     Click="TestAdd_Click"/>
-            <Button x:Name="TestCopy" Content="Копировать" 
-                    Height="30" Width="100" Padding="5,5,5,5" Margin="5,5,0,5"
-                    Click="TestCopy_Click"/>
             <Button x:Name="TestEdit" Content="Изменить" 
                     Height="30" Width="100" Padding="5,5,5,5" Margin="5,5,0,5"
                     Click="TestEdit_Click"/>
+            <Button x:Name="TestQuestion" Content="Вопросы" 
+                    Height="30" Width="100" Padding="5,5,5,5" Margin="5,5,0,5"
+                    Click="TestQuestionButton_Click"/>
             <Button x:Name="TestDellete" Content="Удалить" 
                     Height="30" Width="100" Padding="5,5,5,5" Margin="5,5,0,5"
                     Click="TestDelete_Click"/>
@@ -42,9 +48,9 @@
 
 
         <DockPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
-            <DataGrid x:Name="MainGrid" AutoGenerateColumns="False" CanUserAddRows="False" Background="White">
+            <DataGrid x:Name="MainGrid" AutoGenerateColumns="False" CanUserAddRows="False" HorizontalGridLinesBrush="White" Background="White">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Название теста" Binding="{Binding Path=name}" Width="10*"/>
+                    <DataGridTextColumn Header="Название теста" CanUserSort="False" Binding="{Binding Path=name}" Width="10*"/>
                     <!--кнопки управления данными выделенной строки-->
                     <DataGridTemplateColumn Header="Управление">
                         <DataGridTemplateColumn.CellTemplate>
@@ -60,7 +66,7 @@
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
-            <GridSplitter Grid.Column="1" Grid.Row="2" Width="3" HorizontalAlignment="Stretch" />
+            <!--<GridSplitter Grid.Column="1" Grid.Row="2" Width="3" HorizontalAlignment="Stretch" />-->
         </DockPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Vertical">
@@ -86,7 +92,6 @@
                 <Button x:Name="TestAddRollback" Content="Отменить" 
                     Height="30" Width="100" Padding="5,5,5,5" Margin="5,5,0,5" Click="TestAddRollback_Click"/>
             </StackPanel>
-
         </StackPanel>
 
     </Grid>

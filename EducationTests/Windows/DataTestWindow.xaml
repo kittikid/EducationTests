@@ -1,0 +1,69 @@
+﻿<Window x:Class="EducationTests.Windows.DataTestWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EducationTests.Windows"
+        mc:Ignorable="d"
+        Title="DataTestWindow" Height="200" Width="500"
+        WindowStartupLocation="CenterScreen" AllowsTransparency="False" ResizeMode="NoResize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.Column="0">
+            <TextBlock x:Name="TestNameTextBlock" Text="Test" FontSize="16" FontWeight="Bold" TextWrapping="Wrap"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <StackPanel Orientation="Vertical">
+                    <Label Content="Добавить вопрос" Height="25"/>
+                    <TextBox x:Name="TextQuestion" Width="100" Height="25" />
+                </StackPanel>
+                <Button x:Name="AddQuestionButton" Width="25" Height="25" Content="+" FontWeight="UltraBold" Margin="0, 25, 0, 0" FontSize="15" VerticalContentAlignment="Center" Padding="0,-5,0,0" Click="AddQuestionButton_Click" />
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="0" Grid.Column="2">
+            <TextBlock x:Name="QuestionNameTextBlock" Text="Test" FontSize="16" FontWeight="Bold" TextWrapping="Wrap"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <StackPanel Orientation="Vertical">
+                    <Label Content="Добавить ответ" Height="25"/>
+                    <TextBox x:Name="TextAnswer" Width="100" Height="25" />
+                </StackPanel>
+                <Button x:Name="AddAnswerButton" Width="25" Height="25" Content="+" FontWeight="UltraBold" Margin="2, 25, 0, 0" FontSize="15" VerticalContentAlignment="Center" Padding="0,-5,0,0" Click="AddAnswerButton_Click" />
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button x:Name="AddCommitButton" Width="70" Height="25" Content="Принять" Click="AddCommitButton_Click" />
+            <Button x:Name="CancelButton" Width="70" Height="25" Content="Отменить" Margin="5, 0, 0, 0"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Width="100" Height="25" Content="След. вопрос"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="2">
+            <ListBox x:Name="AnswerList" Height="55" ScrollViewer.CanContentScroll="True"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="Это правильный ответ?"/>
+            <CheckBox x:Name="CorrectCheck" Margin="2"/>
+        </StackPanel>
+        
+    </Grid>
+</Window>

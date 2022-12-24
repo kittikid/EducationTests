@@ -4,15 +4,15 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище EducationTestsModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище EducationTestsModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="answer_table">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="id_question" Type="int" />
-          <Property Name="name_answers" Type="nvarchar" MaxLength="100" />
-          <Property Name="correct_answer" Type="bit" />
+          <Property Name="id_question" Type="int" Nullable="false" />
+          <Property Name="name_answers" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="correct_answer" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="name_test">
           <Key>
@@ -44,10 +44,10 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="id_user" Type="int" />
-          <Property Name="id_test" Type="int" />
-          <Property Name="status" Type="nvarchar" MaxLength="100" />
-          <Property Name="progress" Type="int" />
+          <Property Name="id_user" Type="int" Nullable="false" />
+          <Property Name="id_test" Type="int" Nullable="false" />
+          <Property Name="status" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="progress" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="date" Type="datetime" />
           <Property Name="time_start" Type="time" Precision="7" />
         </EntityType>
@@ -67,12 +67,12 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="email" Type="nvarchar" MaxLength="100" />
           <Property Name="login" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="password" Type="nvarchar" MaxLength="100" />
+          <Property Name="password" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="role" Type="bit" Nullable="false" />
           <Property Name="image" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <Association Name="FK_answer_table_question_table">
-          <End Role="question_table" Type="Self.question_table" Multiplicity="0..1" />
+          <End Role="question_table" Type="Self.question_table" Multiplicity="1" />
           <End Role="answer_table" Type="Self.answer_table" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="question_table">
@@ -96,7 +96,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_user_score_question_table">
-          <End Role="question_table" Type="Self.question_table" Multiplicity="0..1" />
+          <End Role="question_table" Type="Self.question_table" Multiplicity="1" />
           <End Role="user_score" Type="Self.user_score" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="question_table">
@@ -108,7 +108,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_user_score_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="user_score" Type="Self.user_score" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
@@ -223,8 +223,7 @@
             <End Role="user_tests" EntitySet="user_tests" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="EducationTestsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -233,9 +232,9 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="id_question" Type="Int32" />
-          <Property Name="name_answers" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="correct_answer" Type="Boolean" />
+          <Property Name="id_question" Type="Int32" Nullable="false" />
+          <Property Name="name_answers" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="correct_answer" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="question_table" Relationship="Self.FK_answer_table_question_table" FromRole="answer_table" ToRole="question_table" />
           <NavigationProperty Name="user_tests" Relationship="Self.FK_user_tests_answer_table" FromRole="answer_table" ToRole="user_tests" />
         </EntityType>
@@ -274,10 +273,10 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="id_user" Type="Int32" />
-          <Property Name="id_test" Type="Int32" />
-          <Property Name="status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="progress" Type="Int32" />
+          <Property Name="id_user" Type="Int32" Nullable="false" />
+          <Property Name="id_test" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="progress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="date" Type="DateTime" Precision="3" />
           <Property Name="time_start" Type="Time" Precision="7" />
           <NavigationProperty Name="question_table" Relationship="Self.FK_user_score_question_table" FromRole="user_score" ToRole="question_table" />
@@ -303,13 +302,13 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="login" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="role" Type="Boolean" Nullable="false" />
           <Property Name="image" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="user_score" Relationship="Self.FK_user_score_Users" FromRole="Users" ToRole="user_score" />
         </EntityType>
         <Association Name="FK_answer_table_question_table">
-          <End Role="question_table" Type="Self.question_table" Multiplicity="0..1" />
+          <End Role="question_table" Type="Self.question_table" Multiplicity="1" />
           <End Role="answer_table" Type="Self.answer_table" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="question_table">
@@ -345,7 +344,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_user_score_question_table">
-          <End Role="question_table" Type="Self.question_table" Multiplicity="0..1" />
+          <End Role="question_table" Type="Self.question_table" Multiplicity="1" />
           <End Role="user_score" Type="Self.user_score" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="question_table">
@@ -369,7 +368,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_user_score_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="user_score" Type="Self.user_score" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">

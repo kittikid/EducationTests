@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:EducationTests.Windows"
         mc:Ignorable="d"
         Title="LoginWindow" Height="200" Width="600" MinHeight="200" MinWidth="600" 
-        WindowStartupLocation="CenterScreen" AllowsTransparency="True" ResizeMode="NoResize" WindowStyle="None" MouseLeftButtonDown="Window_MouseLeftButtonDown">
+        WindowStartupLocation="CenterScreen" AllowsTransparency="False" ResizeMode="NoResize"  MouseLeftButtonDown="Window_MouseLeftButtonDown">
     <Grid x:Name="MainGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"/>

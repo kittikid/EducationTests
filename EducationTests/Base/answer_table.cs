@@ -21,9 +21,9 @@ namespace EducationTests.Base
         }
     
         public int id { get; set; }
-        public Nullable<int> id_question { get; set; }
+        public int id_question { get; set; }
         public string name_answers { get; set; }
-        public Nullable<bool> correct_answer { get; set; }
+        public bool correct_answer { get; set; }
     
         public virtual question_table question_table { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

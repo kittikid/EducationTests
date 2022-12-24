@@ -20,10 +20,10 @@ namespace EducationTests
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public MainWindow(int _userId)
         {
             InitializeComponent();
-            MainFrame.Navigate(new Pages.MainPage());
+            MainFrame.Navigate(new Pages.MainPage(0, _userId));
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) => DragMove();

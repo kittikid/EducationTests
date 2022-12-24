@@ -37,7 +37,6 @@ namespace EducationTests.Windows
             User.login = LoginTextBox.Text;
             User.password = PasswordPasswordBox.Password != "" ? PasswordPasswordBox.Password : PasswordTextBox.Text;
             User.role = false;
-            //User.FriendlyName = "";
             // Добавление его в базу данных
             Database.Users.Add(User);
             // Сохранение изменений

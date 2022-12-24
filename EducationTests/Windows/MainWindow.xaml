@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:EducationTests"
         mc:Ignorable="d"
         Title="MainWindow" Height="300" Width="600"
-        WindowStartupLocation="CenterScreen" AllowsTransparency="True" ResizeMode="NoResize" WindowStyle="None" MouseLeftButtonDown="Window_MouseLeftButtonDown">
+        WindowStartupLocation="CenterScreen" AllowsTransparency="False" ResizeMode="NoResize" MouseLeftButtonDown="Window_MouseLeftButtonDown">
     <Grid>
         <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
     </Grid>

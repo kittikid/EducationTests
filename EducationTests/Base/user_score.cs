@@ -21,10 +21,10 @@ namespace EducationTests.Base
         }
     
         public int id { get; set; }
-        public Nullable<int> id_user { get; set; }
-        public Nullable<int> id_test { get; set; }
+        public int id_user { get; set; }
+        public int id_test { get; set; }
         public string status { get; set; }
-        public Nullable<int> progress { get; set; }
+        public string progress { get; set; }
         public Nullable<System.DateTime> date { get; set; }
         public Nullable<System.TimeSpan> time_start { get; set; }
     

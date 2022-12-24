@@ -44,7 +44,9 @@ namespace EducationTests.Windows
             Base.Users User = DataBase.Users.SingleOrDefault(U => U.login == LoginText.Text && U.password == PasswordText.Text);
             if (User != null)
             {
-                MainWindow window = new MainWindow();
+                int userId = DataBase.Users.SingleOrDefault(U => U.login == LoginText.Text).id;
+                //MessageBox.Show(userId.ToString());
+                MainWindow window = new MainWindow(userId);
                 window.Show();
                 Close();
             }

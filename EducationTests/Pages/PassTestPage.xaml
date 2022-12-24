@@ -27,11 +27,10 @@
         </StackPanel>
 
         <DockPanel Grid.Row="2">
-            <DataGrid x:Name="AnswerGrid" AutoGenerateColumns="False" CanUserAddRows="False" Background="White">
+            <DataGrid x:Name="AnswerGrid" AutoGenerateColumns="False" ColumnHeaderHeight="0"
+                      HorizontalGridLinesBrush="White" CanUserAddRows="False" Background="White">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Path=name_answers}" Width="*"/>
-                    <!--кнопки управления данными выделенной строки-->
-                    
                 </DataGrid.Columns>
             </DataGrid>
         </DockPanel>
