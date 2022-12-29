@@ -53,7 +53,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Width="100" Height="25" Content="След. вопрос"/>
+            <Button x:Name="NextQuestionButton" Width="100" Height="25" Content="След. вопрос" Click="NextQuestionButton_Click"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="2">

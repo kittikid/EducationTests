@@ -20,7 +20,8 @@
         </Grid.ColumnDefinitions>
 
         <DockPanel Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
-            <DataGrid x:Name="UserProfileGrid" AutoGenerateColumns="False" CanUserAddRows="False" HorizontalGridLinesBrush="White" Background="White">
+            <DataGrid x:Name="UserProfileGrid" AutoGenerateColumns="False" CanUserAddRows="False" 
+                      HorizontalGridLinesBrush="White" Background="White">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Название теста" Binding="{Binding Path=id_test}" Width="*"/>
                     <DataGridTextColumn Header="Статус теста" Binding="{Binding Path=status}" Width="*"/>

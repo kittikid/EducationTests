@@ -72,7 +72,7 @@ namespace EducationTests.Windows
             }
             
         }
-        //есди коррект то выписывать в отдельную переменную има/индекс и потом проверять при добавлении в базу и менять занчение на true ну типа флага
+        
         private void AddAnswerButton_Click(object sender, RoutedEventArgs e)
         {
             _answerName = TextAnswer.Text;
@@ -80,25 +80,11 @@ namespace EducationTests.Windows
             Base.answer_table answer = new Base.answer_table();
             answer.name_answers = _answerName;
             answer.id_question = SourceCore.testsDataBase.question_table.SingleOrDefault(t => t.question == _questionName).id;
-            if (CorrectCheck.IsChecked == true) 
-            {
-                answer.correct_answer = true;
-                CorrectCheck.IsChecked = false;
-            }
+            CorrectCheck.IsChecked = true ? answer.correct_answer = true : answer.correct_answer = false;
+            CorrectCheck.IsChecked = false;
+            TextAnswer.Clear();
             SourceCore.testsDataBase.answer_table.Add(answer);
         }
-
-        //public void UpdateGrid(Base.answer_table answerTest)
-        //{
-        //    if ((answerTest == null) && (AnswerList.ItemsSource != null))
-        //    {
-        //        answerTest = (Base.answer_table)AnswerList.SelectedItem;
-        //    }
-
-        //    AnswerTest = new ObservableCollection<Base.answer_table>(SourceCore.testsDataBase.answer_table);
-        //    AnswerList.ItemsSource = AnswerTest;
-        //    AnswerList.SelectedItem = answerTest;
-        //}
 
         private void AddCommitButton_Click(object sender, RoutedEventArgs e)
         {
@@ -106,12 +92,9 @@ namespace EducationTests.Windows
 
             if (string.IsNullOrEmpty(TextQuestion.Text))
                 errors.AppendLine("Укажите имя вопроса");
-            //if (string.IsNullOrEmpty(BookTextAuthors.Text))
-            //    errors.AppendLine("Укажите название книги");
-            //if (((Base.Publishers)BookComboBoxPublishers.SelectedItem == null) || (BookComboBoxPublishers.Text == " ..."))
-            //    errors.AppendLine("Укажите издательство");
-            //if (string.IsNullOrEmpty(BookTextPublishYear.Text))
-            //    errors.AppendLine("Укажите название книги");
+            if (string.IsNullOrEmpty(AnswerList.Items.ToString()))
+                errors.AppendLine("Укажите ответы");
+
 
             if (errors.Length > 0)
             {
@@ -154,6 +137,15 @@ namespace EducationTests.Windows
             {
                 MessageBox.Show(ex.Message.ToString());
             }
+        }
+
+        private void NextQuestionButton_Click(object sender, RoutedEventArgs e)
+        {
+            TextQuestion.Clear();
+            TextAnswer.Clear();
+            AnswerList.Items.Clear();
+            AddQuestionButton.IsEnabled = true;
+            AddCommitButton.IsEnabled = true;
         }
     }
 }
