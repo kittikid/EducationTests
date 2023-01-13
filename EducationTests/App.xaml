@@ -4,6 +4,20 @@
              xmlns:local="clr-namespace:EducationTests"
              StartupUri="Windows\LoginWindow.xaml">
     <Application.Resources>
-         
+        <!-- Flat Button Style -->
+        <Style TargetType="Button" >
+            <Setter Property="Control.Background" Value="{x:Null}" />
+            <Setter Property="Control.BorderBrush" Value="Gray" />
+            <Style.Triggers>
+                <Trigger Property="Control.IsMouseOver" Value="True">
+                    <Setter Property="Control.Background" Value="Gray" />
+                    <Setter Property="Control.BorderBrush" Value="Gray" />
+                    <!--<Setter Property="Control.BorderBrush" Value="{x:Null}" />-->
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <!-- End Flat Button Style -->
+       
+        
     </Application.Resources>
 </Application>

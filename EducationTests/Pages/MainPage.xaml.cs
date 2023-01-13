@@ -24,16 +24,18 @@ namespace EducationTests.Pages
     /// </summary>
     public partial class MainPage : Page
     {
-        public MainPage(int testId, int userId)
+        public MainPage(int testId, int userId, int userTestsId)
         {
+            Database = new Base.EducationTestsEntities();
             InitializeComponent();
             DataContext = this;
-            MainGrid.ItemsSource = SourceCore.testsDataBase.name_test.ToList();
+            MainGrid.ItemsSource = Database.name_test.ToList();
             UpdateGrid(null);
             TestDlgLoad(false, "");
             DataContext = this;
             _testId = testId;
             _userId = userId;
+            _userTestsId = userTestsId;
         }
 
         private int DlgMode;
@@ -41,12 +43,14 @@ namespace EducationTests.Pages
         private ObservableCollection<Base.name_test> NameTest;
         private readonly int _testId;
         private readonly int _userId;
+        private readonly int _userTestsId;
+        private Base.EducationTestsEntities Database;
 
         public void TestDlgLoad(bool b, string DlgModeContent)
         {
             if (b == true)
             {
-                TestColumnChange.Width = new GridLength(400);
+                TestColumnChange.Width = new GridLength(250);
                 MainGrid.IsHitTestVisible = false;
                 //BookLabel.Content = DlgModeContent;
                 TestAddCommit.Content = DlgModeContent;
@@ -74,10 +78,9 @@ namespace EducationTests.Pages
                 nameTest = (Base.name_test)MainGrid.SelectedItem;
             }
 
-            NameTest = new ObservableCollection<Base.name_test>(SourceCore.testsDataBase.name_test);
+            NameTest = new ObservableCollection<Base.name_test>(Database.name_test);
             MainGrid.ItemsSource = NameTest;
             MainGrid.SelectedItem = nameTest;
-            //BookComboBoxPublishers.ItemsSource = SourceCore.MyBase.Publishers.ToList();
         }
 
 
@@ -93,6 +96,9 @@ namespace EducationTests.Pages
             if (MainGrid.SelectedItem != null)
             {
                 TestDlgLoad(true, "Изменить тест");
+                SelectedTest = (Base.name_test)MainGrid.SelectedItem;
+                //SelectedQuestion = (Base.question_table)MainGrid.SelectedItem;
+                TestTextName.Text = SelectedTest.name;
                 //SelectedBook = (Base.Books)BookDataGrid.SelectedItem;
                 //BookTextName.Text = SelectedBook.Name;
                 //BookTextAuthors.Text = SelectedBook.Authors;
@@ -113,7 +119,6 @@ namespace EducationTests.Pages
             {
                 try
                 {
-                    // Ссылка на удаляемую книгу
                     Base.name_test DeletingBook = (Base.name_test)MainGrid.SelectedItem;
                     // Определение ссылки, на которую должен перейти указатель после удаления
                     if (MainGrid.SelectedIndex < MainGrid.Items.Count - 1)
@@ -128,8 +133,8 @@ namespace EducationTests.Pages
                         }
                     }
                     Base.name_test SelectingTest = (Base.name_test)MainGrid.SelectedItem;
-                    SourceCore.testsDataBase.name_test.Remove(DeletingBook);
-                    SourceCore.testsDataBase.SaveChanges();
+                    Database.name_test.Remove(DeletingBook);
+                    Database.SaveChanges();
                     UpdateGrid(SelectingTest);
                 }
                 catch
@@ -168,14 +173,14 @@ namespace EducationTests.Pages
                 //NewBook.Authors = BookTextAuthors.Text;
                 //NewBook.Publishers = (Base.Publishers)BookComboBoxPublishers.SelectedItem;
                 //NewBook.PublishYear = (short?)int.Parse(BookTextPublishYear.Text);
-                SourceCore.testsDataBase.name_test.Add(NewTest);
+                Database.name_test.Add(NewTest);
                 SelectedTest = NewTest;
             }
             else
             {
                 var EditTest = new Base.name_test();
-                //EditTest = SourceCore.testsDataBase.name_test.First(p => p.IdBook == SelectedTest.IdBook);
-                //EditBook.Name = BookTextName.Text;
+                EditTest = Database.name_test.First(t => t.name == SelectedTest.name);
+                EditTest.name = TestTextName.Text;
                 //EditBook.Authors = BookTextAuthors.Text;
                 //EditBook.Publishers = (Base.Publishers)BookComboBoxPublishers.SelectedItem;
                 //EditBook.PublishYear = (short?)int.Parse(BookTextPublishYear.Text);
@@ -183,7 +188,7 @@ namespace EducationTests.Pages
 
             try
             {
-                SourceCore.testsDataBase.SaveChanges();
+                Database.SaveChanges();
                 TestDlgLoad(false, "");
                 UpdateGrid(SelectedTest);
             }
@@ -207,6 +212,16 @@ namespace EducationTests.Pages
                 if (MainGrid.SelectedIndex != -1)
                 {
                     Base.name_test value = (Base.name_test)MainGrid.SelectedItem;
+                    int valueName = Database.name_test.SingleOrDefault(t => t.name == value.name).id;
+                    int valueTest = 0;
+                    try
+                    { valueTest = Database.user_tests.First(t => t.id_test == valueName).id; }
+                    catch { }
+                    if (valueTest > 0) 
+                    {
+                        MessageBox.Show("Данный тест уже пройден", "Инфо", MessageBoxButton.OK, MessageBoxImage.Question);
+                        return;
+                    }
                     PassTestPage page = new PassTestPage(value.name, _userId);
                     this.NavigationService.Navigate(page);
                 }
@@ -221,7 +236,7 @@ namespace EducationTests.Pages
         {
             try
             {
-                UserProfilePage page = new UserProfilePage(_userId);
+                UserProfilePage page = new UserProfilePage(_userId, _testId);
                 this.NavigationService.Navigate(page);
             }
             catch (Exception ex) 
@@ -232,9 +247,15 @@ namespace EducationTests.Pages
 
         private void TestQuestionButton_Click(object sender, RoutedEventArgs e)
         {
-            //int id = AnswerGrid.SelectedIndex;
-            Base.name_test value = (Base.name_test)MainGrid.SelectedItem;
-            //var correctValue = SourceCore.testsDataBase.answer_table.SingleOrDefault(t => t.correct_answer == true && t.id_question == _idQuestion).name_answers;
+            Base.name_test value = null;
+            try { value = (Base.name_test)MainGrid.SelectedItem; } catch { }
+
+            if (value == null) 
+            {
+                MessageBox.Show("Выберите тест", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Question);
+                return;
+            }
+            
             DataTestWindow window = new DataTestWindow(value.name);
             window.Show();
         }

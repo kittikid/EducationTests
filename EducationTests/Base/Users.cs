@@ -17,7 +17,7 @@ namespace EducationTests.Base
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Users()
         {
-            this.user_score = new HashSet<user_score>();
+            this.user_tests = new HashSet<user_tests>();
         }
     
         public int id { get; set; }
@@ -28,6 +28,6 @@ namespace EducationTests.Base
         public string image { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<user_score> user_score { get; set; }
+        public virtual ICollection<user_tests> user_tests { get; set; }
     }
 }

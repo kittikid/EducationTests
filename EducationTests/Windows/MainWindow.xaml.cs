@@ -23,7 +23,7 @@ namespace EducationTests
         public MainWindow(int _userId)
         {
             InitializeComponent();
-            MainFrame.Navigate(new Pages.MainPage(0, _userId));
+            MainFrame.Navigate(new Pages.MainPage(0, _userId, 0));
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) => DragMove();

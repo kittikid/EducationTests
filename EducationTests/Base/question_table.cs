@@ -18,7 +18,6 @@ namespace EducationTests.Base
         public question_table()
         {
             this.answer_table = new HashSet<answer_table>();
-            this.user_score = new HashSet<user_score>();
             this.user_tests = new HashSet<user_tests>();
         }
     
@@ -29,8 +28,6 @@ namespace EducationTests.Base
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<answer_table> answer_table { get; set; }
         public virtual name_test name_test { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<user_score> user_score { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<user_tests> user_tests { get; set; }
     }

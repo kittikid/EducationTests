@@ -11,6 +11,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
@@ -20,6 +21,11 @@
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" Grid.Row="1">
+            <TextBlock x:Name="TimeTextBlock" Text="Время прохождения: " FontSize="24" FontWeight="Bold" Padding="5, 5, 0, 0"/>
+            <TextBlock x:Name="NumTimeTextBlock" FontSize="24" FontWeight="Bold" Padding="5, 5, 0, 0"/>
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal" Grid.Row="2">
             <TextBlock x:Name="ResultTextBlock" Text="Ваш результат: " FontSize="24" FontWeight="Bold" Padding="5, 5, 0, 0"/>
             <TextBlock x:Name="NumResultTextBlock" FontSize="24" FontWeight="Bold" Padding="5, 5, 0, 0"/>
         </StackPanel>

@@ -61,3 +61,6 @@ C:\Папка для моих папок\Курсовая 2\nuzhin\EducationTest
 C:\Папка для моих папок\Курсовая 2\nuzhin\EducationTests\EducationTests\obj\Debug\Pages\UserProfilePage.baml
 C:\Папка для моих папок\Курсовая 2\nuzhin\EducationTests\EducationTests\obj\Debug\Windows\DataTestWindow.g.cs
 C:\Папка для моих папок\Курсовая 2\nuzhin\EducationTests\EducationTests\obj\Debug\Windows\DataTestWindow.baml
+C:\Папка для моих папок\Курсовая 2\nuzhin\EducationTests\EducationTests\obj\Debug\App.baml
+C:\Папка для моих папок\Курсовая 2\nuzhin\EducationTests\EducationTests\obj\Debug\Windows\UserTestResult.g.cs
+C:\Папка для моих папок\Курсовая 2\nuzhin\EducationTests\EducationTests\obj\Debug\Windows\UserTestResult.baml

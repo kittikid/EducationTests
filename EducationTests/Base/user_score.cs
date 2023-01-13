@@ -14,23 +14,16 @@ namespace EducationTests.Base
     
     public partial class user_score
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public user_score()
-        {
-            this.user_tests = new HashSet<user_tests>();
-        }
-    
         public int id { get; set; }
-        public int id_user { get; set; }
-        public int id_test { get; set; }
+        public int id_user_test { get; set; }
         public string status { get; set; }
         public string progress { get; set; }
-        public Nullable<System.DateTime> date { get; set; }
+        public string date { get; set; }
         public Nullable<System.TimeSpan> time_start { get; set; }
+        public int id_user { get; set; }
+        public int id_test { get; set; }
     
-        public virtual question_table question_table { get; set; }
-        public virtual Users Users { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<user_tests> user_tests { get; set; }
+        public virtual user_tests user_tests { get; set; }
+        public virtual name_test name_test { get; set; }
     }
 }

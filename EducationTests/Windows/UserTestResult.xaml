@@ -1,0 +1,31 @@
+﻿<Window x:Class="EducationTests.Windows.UserTestResult"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EducationTests.Windows"
+        mc:Ignorable="d"
+        Title="UserTestResult" Height="400" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center">
+            <TextBlock x:Name="TestNameTextBlock" Text="Имя теста" FontSize="24" FontWeight="Bold" Padding="5, 0, 0, 0"/>
+        </StackPanel>
+
+        <DockPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
+            <DataGrid x:Name="UserResultGrid" AutoGenerateColumns="False" CanUserAddRows="False" 
+                      HorizontalGridLinesBrush="White" Background="White">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Вопрос" CanUserSort="False" Binding="{Binding Path=question_table.question}" Width="10*"/>
+                    <DataGridTextColumn Header="Ответ" CanUserSort="False" Binding="{Binding Path=answer_table.name_answers}" Width="10*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <GridSplitter Grid.Column="1" Grid.Row="1" Width="3" HorizontalAlignment="Stretch" />
+        </DockPanel>
+        
+    </Grid>
+</Window>

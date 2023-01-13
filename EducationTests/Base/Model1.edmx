@@ -46,9 +46,10 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_user" Type="int" Nullable="false" />
           <Property Name="id_test" Type="int" Nullable="false" />
+          <Property Name="id_user_test" Type="int" Nullable="false" />
           <Property Name="status" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="progress" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="date" Type="datetime" />
+          <Property Name="date" Type="nvarchar" MaxLength="10" />
           <Property Name="time_start" Type="time" Precision="7" />
         </EntityType>
         <EntityType Name="user_tests">
@@ -56,7 +57,8 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="id_user_score" Type="int" Nullable="false" />
+          <Property Name="id_user" Type="int" Nullable="false" />
+          <Property Name="id_test" Type="int" Nullable="false" />
           <Property Name="id_question" Type="int" Nullable="false" />
           <Property Name="id_answer" Type="int" Nullable="false" />
         </EntityType>
@@ -95,11 +97,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_user_score_question_table">
-          <End Role="question_table" Type="Self.question_table" Multiplicity="1" />
+        <Association Name="FK_user_score_name_test">
+          <End Role="name_test" Type="Self.name_test" Multiplicity="1" />
           <End Role="user_score" Type="Self.user_score" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="question_table">
+            <Principal Role="name_test">
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="user_score">
@@ -107,15 +109,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_user_score_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+        <Association Name="FK_user_score_user_tests">
+          <End Role="user_tests" Type="Self.user_tests" Multiplicity="1" />
           <End Role="user_score" Type="Self.user_score" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Users">
+            <Principal Role="user_tests">
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="user_score">
-              <PropertyRef Name="id_user" />
+              <PropertyRef Name="id_user_test" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -131,6 +133,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_user_tests_name_test">
+          <End Role="name_test" Type="Self.name_test" Multiplicity="1" />
+          <End Role="user_tests" Type="Self.user_tests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="name_test">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user_tests">
+              <PropertyRef Name="id_test" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_user_tests_question_table">
           <End Role="question_table" Type="Self.question_table" Multiplicity="1" />
           <End Role="user_tests" Type="Self.user_tests" Multiplicity="*" />
@@ -143,15 +157,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_user_tests_user_score">
-          <End Role="user_score" Type="Self.user_score" Multiplicity="1" />
+        <Association Name="FK_user_tests_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="user_tests" Type="Self.user_tests" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="user_score">
+            <Principal Role="Users">
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="user_tests">
-              <PropertyRef Name="id_user_score" />
+              <PropertyRef Name="id_user" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -202,24 +216,28 @@
             <End Role="name_test" EntitySet="name_test" />
             <End Role="question_table" EntitySet="question_table" />
           </AssociationSet>
-          <AssociationSet Name="FK_user_score_question_table" Association="Self.FK_user_score_question_table">
-            <End Role="question_table" EntitySet="question_table" />
+          <AssociationSet Name="FK_user_score_name_test" Association="Self.FK_user_score_name_test">
+            <End Role="name_test" EntitySet="name_test" />
             <End Role="user_score" EntitySet="user_score" />
           </AssociationSet>
-          <AssociationSet Name="FK_user_score_Users" Association="Self.FK_user_score_Users">
-            <End Role="Users" EntitySet="Users" />
+          <AssociationSet Name="FK_user_score_user_tests" Association="Self.FK_user_score_user_tests">
+            <End Role="user_tests" EntitySet="user_tests" />
             <End Role="user_score" EntitySet="user_score" />
           </AssociationSet>
           <AssociationSet Name="FK_user_tests_answer_table" Association="Self.FK_user_tests_answer_table">
             <End Role="answer_table" EntitySet="answer_table" />
             <End Role="user_tests" EntitySet="user_tests" />
           </AssociationSet>
+          <AssociationSet Name="FK_user_tests_name_test" Association="Self.FK_user_tests_name_test">
+            <End Role="name_test" EntitySet="name_test" />
+            <End Role="user_tests" EntitySet="user_tests" />
+          </AssociationSet>
           <AssociationSet Name="FK_user_tests_question_table" Association="Self.FK_user_tests_question_table">
             <End Role="question_table" EntitySet="question_table" />
             <End Role="user_tests" EntitySet="user_tests" />
           </AssociationSet>
-          <AssociationSet Name="FK_user_tests_user_score" Association="Self.FK_user_tests_user_score">
-            <End Role="user_score" EntitySet="user_score" />
+          <AssociationSet Name="FK_user_tests_Users" Association="Self.FK_user_tests_Users">
+            <End Role="Users" EntitySet="Users" />
             <End Role="user_tests" EntitySet="user_tests" />
           </AssociationSet>
         </EntityContainer>
@@ -245,6 +263,8 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="question_table" Relationship="Self.FK_question_table_name_test" FromRole="name_test" ToRole="question_table" />
+          <NavigationProperty Name="user_score" Relationship="EducationTestsModel.FK_user_score_name_test" FromRole="name_test" ToRole="user_score" />
+          <NavigationProperty Name="user_tests" Relationship="EducationTestsModel.FK_user_tests_name_test" FromRole="name_test" ToRole="user_tests" />
         </EntityType>
         <EntityType Name="question_table">
           <Key>
@@ -255,7 +275,6 @@
           <Property Name="id_name_test" Type="Int32" Nullable="false" />
           <NavigationProperty Name="answer_table" Relationship="Self.FK_answer_table_question_table" FromRole="question_table" ToRole="answer_table" />
           <NavigationProperty Name="name_test" Relationship="Self.FK_question_table_name_test" FromRole="question_table" ToRole="name_test" />
-          <NavigationProperty Name="user_score" Relationship="Self.FK_user_score_question_table" FromRole="question_table" ToRole="user_score" />
           <NavigationProperty Name="user_tests" Relationship="Self.FK_user_tests_question_table" FromRole="question_table" ToRole="user_tests" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -273,27 +292,30 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="id_user" Type="Int32" Nullable="false" />
-          <Property Name="id_test" Type="Int32" Nullable="false" />
+          <Property Name="id_user_test" Type="Int32" Nullable="false" />
           <Property Name="status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="progress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="date" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="time_start" Type="Time" Precision="7" />
-          <NavigationProperty Name="question_table" Relationship="Self.FK_user_score_question_table" FromRole="user_score" ToRole="question_table" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_user_score_Users" FromRole="user_score" ToRole="Users" />
-          <NavigationProperty Name="user_tests" Relationship="Self.FK_user_tests_user_score" FromRole="user_score" ToRole="user_tests" />
+          <NavigationProperty Name="user_tests" Relationship="Self.FK_user_score_user_tests" FromRole="user_score" ToRole="user_tests" />
+          <Property Name="id_user" Type="Int32" Nullable="false" />
+          <Property Name="id_test" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="name_test" Relationship="EducationTestsModel.FK_user_score_name_test" FromRole="user_score" ToRole="name_test" />
         </EntityType>
         <EntityType Name="user_tests">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="id_user_score" Type="Int32" Nullable="false" />
+          <Property Name="id_user" Type="Int32" Nullable="false" />
+          <Property Name="id_test" Type="Int32" Nullable="false" />
           <Property Name="id_question" Type="Int32" Nullable="false" />
           <Property Name="id_answer" Type="Int32" Nullable="false" />
           <NavigationProperty Name="answer_table" Relationship="Self.FK_user_tests_answer_table" FromRole="user_tests" ToRole="answer_table" />
           <NavigationProperty Name="question_table" Relationship="Self.FK_user_tests_question_table" FromRole="user_tests" ToRole="question_table" />
-          <NavigationProperty Name="user_score" Relationship="Self.FK_user_tests_user_score" FromRole="user_tests" ToRole="user_score" />
+          <NavigationProperty Name="user_score" Relationship="Self.FK_user_score_user_tests" FromRole="user_tests" ToRole="user_score" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_user_tests_Users" FromRole="user_tests" ToRole="Users" />
+          <NavigationProperty Name="name_test" Relationship="EducationTestsModel.FK_user_tests_name_test" FromRole="user_tests" ToRole="name_test" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -305,7 +327,7 @@
           <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="role" Type="Boolean" Nullable="false" />
           <Property Name="image" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="user_score" Relationship="Self.FK_user_score_Users" FromRole="Users" ToRole="user_score" />
+          <NavigationProperty Name="user_tests" Relationship="Self.FK_user_tests_Users" FromRole="Users" ToRole="user_tests" />
         </EntityType>
         <Association Name="FK_answer_table_question_table">
           <End Role="question_table" Type="Self.question_table" Multiplicity="1" />
@@ -343,18 +365,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_user_score_question_table">
-          <End Role="question_table" Type="Self.question_table" Multiplicity="1" />
-          <End Role="user_score" Type="Self.user_score" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="question_table">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="user_score">
-              <PropertyRef Name="id_test" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_user_tests_question_table">
           <End Role="question_table" Type="Self.question_table" Multiplicity="1" />
           <End Role="user_tests" Type="Self.user_tests" Multiplicity="*" />
@@ -367,27 +377,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_user_score_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+        <Association Name="FK_user_score_user_tests">
+          <End Role="user_tests" Type="Self.user_tests" Multiplicity="1" />
           <End Role="user_score" Type="Self.user_score" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_tests">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user_score">
+              <PropertyRef Name="id_user_test" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_tests_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="user_tests" Type="Self.user_tests" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="user_score">
-              <PropertyRef Name="id_user" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_user_tests_user_score">
-          <End Role="user_score" Type="Self.user_score" Multiplicity="1" />
-          <End Role="user_tests" Type="Self.user_tests" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="user_score">
-              <PropertyRef Name="id" />
-            </Principal>
             <Dependent Role="user_tests">
-              <PropertyRef Name="id_user_score" />
+              <PropertyRef Name="id_user" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -411,20 +421,16 @@
             <End Role="name_test" EntitySet="name_test" />
             <End Role="question_table" EntitySet="question_table" />
           </AssociationSet>
-          <AssociationSet Name="FK_user_score_question_table" Association="Self.FK_user_score_question_table">
-            <End Role="question_table" EntitySet="question_table" />
-            <End Role="user_score" EntitySet="user_score" />
-          </AssociationSet>
           <AssociationSet Name="FK_user_tests_question_table" Association="Self.FK_user_tests_question_table">
             <End Role="question_table" EntitySet="question_table" />
             <End Role="user_tests" EntitySet="user_tests" />
           </AssociationSet>
-          <AssociationSet Name="FK_user_score_Users" Association="Self.FK_user_score_Users">
-            <End Role="Users" EntitySet="Users" />
+          <AssociationSet Name="FK_user_score_user_tests" Association="Self.FK_user_score_user_tests">
+            <End Role="user_tests" EntitySet="user_tests" />
             <End Role="user_score" EntitySet="user_score" />
           </AssociationSet>
-          <AssociationSet Name="FK_user_tests_user_score" Association="Self.FK_user_tests_user_score">
-            <End Role="user_score" EntitySet="user_score" />
+          <AssociationSet Name="FK_user_tests_Users" Association="Self.FK_user_tests_Users">
+            <End Role="Users" EntitySet="Users" />
             <End Role="user_tests" EntitySet="user_tests" />
           </AssociationSet>
           <FunctionImport Name="sp_alterdiagram">
@@ -457,6 +463,14 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <AssociationSet Name="FK_user_score_name_test" Association="EducationTestsModel.FK_user_score_name_test">
+            <End Role="name_test" EntitySet="name_test" />
+            <End Role="user_score" EntitySet="user_score" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_tests_name_test" Association="EducationTestsModel.FK_user_tests_name_test">
+            <End Role="name_test" EntitySet="name_test" />
+            <End Role="user_tests" EntitySet="user_tests" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -469,6 +483,30 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
+        <Association Name="FK_user_score_name_test">
+          <End Type="EducationTestsModel.name_test" Role="name_test" Multiplicity="1" />
+          <End Type="EducationTestsModel.user_score" Role="user_score" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="name_test">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user_score">
+              <PropertyRef Name="id_test" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_tests_name_test">
+          <End Type="EducationTestsModel.name_test" Role="name_test" Multiplicity="1" />
+          <End Type="EducationTestsModel.user_tests" Role="user_tests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="name_test">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user_tests">
+              <PropertyRef Name="id_test" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -516,9 +554,10 @@
           <EntitySetMapping Name="user_score">
             <EntityTypeMapping TypeName="EducationTestsModel.user_score">
               <MappingFragment StoreEntitySet="user_score">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="id_user" ColumnName="id_user" />
                 <ScalarProperty Name="id_test" ColumnName="id_test" />
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_user_test" ColumnName="id_user_test" />
                 <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="progress" ColumnName="progress" />
                 <ScalarProperty Name="date" ColumnName="date" />
@@ -530,7 +569,8 @@
             <EntityTypeMapping TypeName="EducationTestsModel.user_tests">
               <MappingFragment StoreEntitySet="user_tests">
                 <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="id_user_score" ColumnName="id_user_score" />
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+                <ScalarProperty Name="id_test" ColumnName="id_test" />
                 <ScalarProperty Name="id_question" ColumnName="id_question" />
                 <ScalarProperty Name="id_answer" ColumnName="id_answer" />
               </MappingFragment>

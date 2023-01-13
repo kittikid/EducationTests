@@ -4,21 +4,22 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c5005ae3b9d54398aae66b918ae2e99a" Name="Diagram1">
-        <EntityTypeShape EntityType="EducationTestsModel.answer_table" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="EducationTestsModel.name_test" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="EducationTestsModel.question_table" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="EducationTestsModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="8.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="EducationTestsModel.user_score" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EducationTestsModel.user_tests" Width="1.5" PointX="7.5" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="EducationTestsModel.Users" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+      <Diagram DiagramId="793f3cf1607b4193bb31ccfa2f447554" Name="Diagram1" ZoomLevel="93">
+        <EntityTypeShape EntityType="EducationTestsModel.answer_table" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EducationTestsModel.name_test" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EducationTestsModel.question_table" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EducationTestsModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EducationTestsModel.user_score" Width="1.5" PointX="9.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EducationTestsModel.user_tests" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="EducationTestsModel.Users" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
         <AssociationConnector Association="EducationTestsModel.FK_answer_table_question_table" ManuallyRouted="false" />
         <AssociationConnector Association="EducationTestsModel.FK_user_tests_answer_table" ManuallyRouted="false" />
         <AssociationConnector Association="EducationTestsModel.FK_question_table_name_test" ManuallyRouted="false" />
-        <AssociationConnector Association="EducationTestsModel.FK_user_score_question_table" ManuallyRouted="false" />
         <AssociationConnector Association="EducationTestsModel.FK_user_tests_question_table" ManuallyRouted="false" />
-        <AssociationConnector Association="EducationTestsModel.FK_user_score_Users" ManuallyRouted="false" />
-        <AssociationConnector Association="EducationTestsModel.FK_user_tests_user_score" ManuallyRouted="false" />
+        <AssociationConnector Association="EducationTestsModel.FK_user_score_user_tests" ManuallyRouted="false" />
+        <AssociationConnector Association="EducationTestsModel.FK_user_tests_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="EducationTestsModel.FK_user_score_name_test" />
+        <AssociationConnector Association="EducationTestsModel.FK_user_tests_name_test" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

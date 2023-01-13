@@ -42,9 +42,10 @@
     <EntitySetMapping Name="user_score">
       <EntityTypeMapping TypeName="EducationTestsModel.user_score">
         <MappingFragment StoreEntitySet="user_score">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="id_user" ColumnName="id_user" />
           <ScalarProperty Name="id_test" ColumnName="id_test" />
+          <ScalarProperty Name="id_user" ColumnName="id_user" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_user_test" ColumnName="id_user_test" />
           <ScalarProperty Name="status" ColumnName="status" />
           <ScalarProperty Name="progress" ColumnName="progress" />
           <ScalarProperty Name="date" ColumnName="date" />
@@ -56,7 +57,8 @@
       <EntityTypeMapping TypeName="EducationTestsModel.user_tests">
         <MappingFragment StoreEntitySet="user_tests">
           <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="id_user_score" ColumnName="id_user_score" />
+          <ScalarProperty Name="id_user" ColumnName="id_user" />
+          <ScalarProperty Name="id_test" ColumnName="id_test" />
           <ScalarProperty Name="id_question" ColumnName="id_question" />
           <ScalarProperty Name="id_answer" ColumnName="id_answer" />
         </MappingFragment>
