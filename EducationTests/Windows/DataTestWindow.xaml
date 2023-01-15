@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="DataTestWindow" Height="200" Width="500"
         WindowStartupLocation="CenterScreen" AllowsTransparency="False" ResizeMode="NoResize" WindowStyle="None" 
-        BorderBrush="Black" BorderThickness="0.5">
+        BorderBrush="Black" BorderThickness="0.5" MouseLeftButtonDown="Window_MouseLeftButtonDown">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>

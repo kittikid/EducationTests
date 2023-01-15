@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace EducationTests.Windows
 {
@@ -45,7 +35,6 @@ namespace EducationTests.Windows
             if (User != null)
             {
                 int userId = DataBase.Users.SingleOrDefault(U => U.login == LoginText.Text).id;
-                //MessageBox.Show(userId.ToString());
                 MainWindow window = new MainWindow(userId);
                 window.Show();
                 Close();
@@ -54,14 +43,6 @@ namespace EducationTests.Windows
             {
                 MessageBox.Show("Неверно указан логин и/или пароль!", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
             };
-        }
-
-        private void AuthorizationRollBack_Click(object sender, RoutedEventArgs e)
-        {
-            if (MessageBox.Show("Вы действительно хотите выйти из программы?", "Внимание", MessageBoxButton.OKCancel, MessageBoxImage.Warning) == MessageBoxResult.OK)
-            {
-                Close();
-            }
         }
 
         private void RegistrationButton_Click(object sender, RoutedEventArgs e)

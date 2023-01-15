@@ -1,21 +1,8 @@
-﻿using EducationTests.Base;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace EducationTests.Pages
@@ -57,11 +44,11 @@ namespace EducationTests.Pages
             _minute = 0;
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
-            timer.Tick += timer_Tick;
+            timer.Tick += Timer_Tick;
             timer.Start();
         }
 
-        private void timer_Tick(object sender, EventArgs e)
+        private void Timer_Tick(object sender, EventArgs e)
         {
             if (_second > 58)
             {
@@ -115,7 +102,6 @@ namespace EducationTests.Pages
                 return;
             }
             SelectAnswerButton.IsEnabled = true;
-            //Base.user_tests user_Tests = 
             int id = questionList[_idQuestion - 1].id;
             ++_idQuestion;
             Base.user_tests user_Tests = new Base.user_tests { id_user = _userId, id_test = _testId, id_question = id, id_answer = _selectValue};

@@ -1,21 +1,11 @@
-﻿using EducationTests.Base;
-using EducationTests.Windows;
+﻿using EducationTests.Windows;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace EducationTests.Pages
 {
@@ -51,22 +41,22 @@ namespace EducationTests.Pages
             if (b == true)
             {
                 TestColumnChange.Width = new GridLength(250);
-                MainGrid.IsHitTestVisible = false;
-                //BookLabel.Content = DlgModeContent;
                 TestAddCommit.Content = DlgModeContent;
                 TestAdd.IsEnabled = false;
-                //TestCopy.IsEnabled = false;
                 TestEdit.IsEnabled = false;
                 TestDellete.IsEnabled = false;
+                StartTest.IsEnabled = false;
+                TestQuestion.IsEnabled = false;
             }
             else
             {
                 TestColumnChange.Width = new GridLength(0);
                 MainGrid.IsHitTestVisible = true;
                 TestAdd.IsEnabled = true;
-                //TestCopy.IsEnabled = true;
                 TestEdit.IsEnabled = true;
                 TestDellete.IsEnabled = true;
+                StartTest.IsEnabled = true;
+                TestQuestion.IsEnabled = true;
                 DlgMode = -1;
             }
         }
@@ -97,21 +87,13 @@ namespace EducationTests.Pages
             {
                 TestDlgLoad(true, "Изменить тест");
                 SelectedTest = (Base.name_test)MainGrid.SelectedItem;
-                //SelectedQuestion = (Base.question_table)MainGrid.SelectedItem;
                 TestTextName.Text = SelectedTest.name;
-                //SelectedBook = (Base.Books)BookDataGrid.SelectedItem;
-                //BookTextName.Text = SelectedBook.Name;
-                //BookTextAuthors.Text = SelectedBook.Authors;
-                //BookComboBoxPublishers.Text = SelectedBook.Publishers.PublisherName;
-                //BookTextPublishYear.Text = SelectedBook.PublishYear.ToString();
             }
             else
             {
                 MessageBox.Show("Не выбрано ниодной строки!", "Сообщение", MessageBoxButton.OK);
             }
         }
-
-    
 
         private void TestDelete_Click(object sender, RoutedEventArgs e)
         {
@@ -120,7 +102,6 @@ namespace EducationTests.Pages
                 try
                 {
                     Base.name_test DeletingBook = (Base.name_test)MainGrid.SelectedItem;
-                    // Определение ссылки, на которую должен перейти указатель после удаления
                     if (MainGrid.SelectedIndex < MainGrid.Items.Count - 1)
                     {
                         MainGrid.SelectedIndex++;
@@ -152,12 +133,6 @@ namespace EducationTests.Pages
 
             if (string.IsNullOrEmpty(TestTextName.Text))
                 errors.AppendLine("Укажите имя теста");
-            //if (string.IsNullOrEmpty(BookTextAuthors.Text))
-            //    errors.AppendLine("Укажите название книги");
-            //if (((Base.Publishers)BookComboBoxPublishers.SelectedItem == null) || (BookComboBoxPublishers.Text == " ..."))
-            //    errors.AppendLine("Укажите издательство");
-            //if (string.IsNullOrEmpty(BookTextPublishYear.Text))
-            //    errors.AppendLine("Укажите название книги");
 
             if (errors.Length > 0)
             {
@@ -170,9 +145,6 @@ namespace EducationTests.Pages
             {
                 var NewTest = new Base.name_test();
                 NewTest.name = TestTextName.Text;
-                //NewBook.Authors = BookTextAuthors.Text;
-                //NewBook.Publishers = (Base.Publishers)BookComboBoxPublishers.SelectedItem;
-                //NewBook.PublishYear = (short?)int.Parse(BookTextPublishYear.Text);
                 Database.name_test.Add(NewTest);
                 SelectedTest = NewTest;
             }
@@ -181,9 +153,6 @@ namespace EducationTests.Pages
                 var EditTest = new Base.name_test();
                 EditTest = Database.name_test.First(t => t.name == SelectedTest.name);
                 EditTest.name = TestTextName.Text;
-                //EditBook.Authors = BookTextAuthors.Text;
-                //EditBook.Publishers = (Base.Publishers)BookComboBoxPublishers.SelectedItem;
-                //EditBook.PublishYear = (short?)int.Parse(BookTextPublishYear.Text);
             }
 
             try

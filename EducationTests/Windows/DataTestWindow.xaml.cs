@@ -1,20 +1,8 @@
-﻿using EducationTests.Base;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Data;
-using System.Data.Entity;
+﻿using System;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace EducationTests.Windows
 {
@@ -76,8 +64,6 @@ namespace EducationTests.Windows
             Base.answer_table answer = new Base.answer_table();
             answer.name_answers = _answerName;
             answer.id_question = _questionId;
-            //answer.id_question = Database.question_table.SingleOrDefault(t => t.question == _questionName).id;
-            //CorrectCheck.IsChecked = true ? answer.correct_answer = true : answer.correct_answer = false;
             answer.correct_answer = true ? CorrectCheck.IsChecked == true : false;
             CorrectCheck.IsChecked = false;
             TextAnswer.Clear();
@@ -104,8 +90,6 @@ namespace EducationTests.Windows
             {
                 AddCommitButton.IsEnabled = false;
                 Database.SaveChanges();
-                //TestDlgLoad(false, "");
-                //UpdateGrid(SelectedTest);
             }
             catch (Exception ex)
             {
@@ -145,5 +129,7 @@ namespace EducationTests.Windows
             Database.SaveChanges();
             Close();
         }
+
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) => DragMove();
     }
 }
