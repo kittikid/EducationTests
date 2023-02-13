@@ -31,7 +31,7 @@ namespace EducationTests.Windows
 
         private void AuthorizationCommit_Click(object sender, RoutedEventArgs e)
         {
-            Base.Users User = DataBase.Users.SingleOrDefault(U => U.login == LoginText.Text && U.password == PasswordText.Text);
+            Base.Users User = DataBase.Users.SingleOrDefault(U => U.login == LoginText.Text && U.password == PasswordPasswordBox.Password);
             if (User != null)
             {
                 int userId = DataBase.Users.SingleOrDefault(U => U.login == LoginText.Text).id;

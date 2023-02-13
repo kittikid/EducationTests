@@ -29,7 +29,8 @@
                 <Label Content="Логин" Margin="5,5,0,0" FontSize="16" Grid.Column="0" Grid.Row="0"/>
                 <TextBox x:Name="LoginText" Margin="5,5,5,5" Grid.Column="1" Grid.Row="0" VerticalContentAlignment="Center" Padding="5,0,0,0"/>
                 <Label Content="Пароль" Margin="5,5,0,0" FontSize="16" Grid.Column="0" Grid.Row="1"/>
-                <TextBox x:Name="PasswordText" Margin="5,5,5,5" Grid.Column="1" Grid.Row="1" VerticalContentAlignment="Center" Padding="5,0,0,0"/>
+                <TextBox x:Name="PasswordText" Visibility="Hidden" Margin="5,5,5,5" Grid.Column="1" Grid.Row="1" VerticalContentAlignment="Center" Padding="5,0,0,0"/>
+                <PasswordBox x:Name="PasswordPasswordBox" Margin="5,5,5,5" Grid.Column="1" Grid.Row="1" VerticalContentAlignment="Center" Padding="5,0,0,0"/>
                 <StackPanel Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal" 
                             HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Button x:Name="RegistrationButton" Content="Регистрация" Height="35" Width="100" Margin="0,0,5,0"

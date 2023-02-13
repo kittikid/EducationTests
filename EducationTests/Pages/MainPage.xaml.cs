@@ -183,10 +183,14 @@ namespace EducationTests.Pages
                     Base.name_test value = (Base.name_test)MainGrid.SelectedItem;
                     int valueName = Database.name_test.SingleOrDefault(t => t.name == value.name).id;
                     int valueTest = 0;
+                    int flagCheck = -1;
                     try
-                    { valueTest = Database.user_tests.First(t => t.id_test == valueName).id; }
+                    {
+                        flagCheck = Database.user_score.First(t => t.id_test == valueName).id;
+                        valueTest = Database.user_tests.First(t => t.id_test == valueName).id; 
+                    }
                     catch { }
-                    if (valueTest > 0) 
+                    if (flagCheck > 0) 
                     {
                         MessageBox.Show("Данный тест уже пройден", "Инфо", MessageBoxButton.OK, MessageBoxImage.Question);
                         return;

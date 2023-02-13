@@ -123,9 +123,21 @@ namespace EducationTests.Windows
         {
             Base.question_table RemoveQuestion = Database.question_table.SingleOrDefault(t => t.id == _questionId);
             if (_answer != null)
-                Database.answer_table.Remove(_answer);
-            if (RemoveQuestion != null)
-                Database.question_table.Remove(RemoveQuestion);
+            {
+                try
+                {
+                    Database.answer_table.Remove(_answer);
+                } 
+                catch { }
+            }
+            if (RemoveQuestion != null) 
+            {
+                try
+                {
+                    Database.question_table.Remove(RemoveQuestion);
+                }
+                catch { }
+            }
             Database.SaveChanges();
             Close();
         }

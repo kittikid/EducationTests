@@ -75,11 +75,17 @@ namespace EducationTests.Pages
                     Base.user_score SelectingTest = (Base.user_score)UserProfileGrid.SelectedItem;
                     Database.user_score.Remove(DeletingScore);
                     Database.SaveChanges();
-                    for (int i = 0; i < DeletingUserTests.Count; ++i)
-                    { 
-                        Database.user_tests.Remove(DeletingUserTests[i]);
+
+                    int i = -1;
+                    int index = 0;
+                    while (DeletingUserTests.Count > 0) 
+                    {
+                        i = Database.user_tests.First(t => t.id_user == _userId && t.id_test == _testId).id;
+          
+                        Database.user_tests.Remove(DeletingUserTests[index]);
+                        DeletingUserTests.Remove(DeletingUserTests[index]);
+                        Database.SaveChanges();
                     }
-                    Database.SaveChanges();
                     UpdateGrid(SelectingTest);
                 }
                 catch

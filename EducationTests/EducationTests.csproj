@@ -223,6 +223,8 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Images\image.png" />
+    <Resource Include="Pages\image.png" />
     <Content Include="Videos\video.mp4" />
   </ItemGroup>
   <ItemGroup>
